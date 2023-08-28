@@ -1,6 +1,7 @@
 import { Row } from "@/types";
 import log from "@/utils/log";
 import React, { useState, useEffect, Key } from "react";
+import MemoizedListItem from "../listItem/ListItem";
 
 const VirtualizedList = (props: { data: any[] }) => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -41,29 +42,11 @@ const VirtualizedList = (props: { data: any[] }) => {
           }}>
           <ul>
             {visibleItems.map((item: Row, index: number) => (
-              <li
+              <MemoizedListItem
                 key={item.id as Key}
-                position={item.position}
-                style={{
-                  display: "flex",
-                  height: itemHeight,
-                  lineHeight: `${itemHeight}px`,
-                  width: "100%",
-                }}>
-                <div>{item.position}</div>
-                <div
-                  style={{
-                    marginLeft: `${itemHeight}px`,
-                  }}>
-                  {item.name}
-                </div>
-                <div
-                  style={{
-                    marginLeft: `${itemHeight}px`,
-                  }}>
-                  {item.description}
-                </div>
-              </li>
+                item={item}
+                height={itemHeight}
+              />
             ))}
           </ul>
         </div>
