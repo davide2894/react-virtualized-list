@@ -17,7 +17,7 @@ const VirtualizedList = (props: { data: any[] }) => {
   const invisibleItemsHeight =
     (startIndex + visibleItems.length - endIndex) * itemHeight;
 
-  log({ startIndex, endIndex, visibleItems });
+  // log({ startIndex, endIndex, visibleItems });
 
   const handleScroll = (e: any) => {
     setScrollTop(e.target.scrollTop);
@@ -44,7 +44,9 @@ const VirtualizedList = (props: { data: any[] }) => {
             {visibleItems.map((item: Row, index: number) => (
               <MemoizedListItem
                 key={item.id as Key}
-                item={item}
+                description={item.description}
+                position={item.position}
+                name={item.name}
                 height={itemHeight}
               />
             ))}
