@@ -1,38 +1,36 @@
-import { Row } from "@/types";
-import log from "@/utils/log";
 import { memo } from "react";
 
 const MemoizedListItem = memo(function ListItem(props: {
   description: String;
   name: String;
+  price: number;
   position: number;
-  height: any;
+  height: number;
 }) {
-  log(`rendered list item with position ${props.position}`);
-
   return (
-    <li
+    <tr
       data-position={props.position}
       style={{
         display: "flex",
         height: props.height,
         lineHeight: `${props.height}px`,
-        width: "100%",
+        minWidth: "200px",
+        width: "100",
       }}>
-      <div>{props.position}</div>
-      <div
+      <td
         style={{
           marginLeft: `${props.height}px`,
         }}>
         {props.name}
-      </div>
-      <div
+      </td>
+      <td
         style={{
           marginLeft: `${props.height}px`,
         }}>
         {props.description}
-      </div>
-    </li>
+      </td>
+      <td>{props.price}</td>
+    </tr>
   );
 });
 
