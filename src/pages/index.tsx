@@ -1,21 +1,59 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import data from "@/data/data";
+import { generateFakeData } from "@/data/data";
+import fakeDataSlice, {
+  initData,
+} from "@/store/features/fakeData/fakeDataSlice";
 import VirtualizedList from "@/components/virtualizedList/VirtualizedList";
 import log from "@/utils/log";
+import { useAppSelector } from "@/customHooks/useAppSelector";
+import { useAppDispatch } from "@/customHooks/useAppDispatch";
+import { useEffect, useState } from "react";
+import { Row } from "@/types";
+import { updateData } from "@/store/features/fakeData/fakeDataSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  log({ dataLength: data.length });
+export default function Home(props: { serverSideData: Array<Row> }) {
+  const [loading, setLoading] = useState(true);
+  const serverSideData = props.serverSideData;
+  const clientSideData = useAppSelector((state) => state.fakeDataReducer.data);
+  const dispatch = useAppDispatch();
+  log({ clientSideData, dataLength: serverSideData.length });
+
   let content;
 
-  if (data) {
-    content = <VirtualizedList data={data} />;
+  useEffect(() => {
+    if (clientSideData.length) {
+      setLoading(false);
+    }
+  }, [clientSideData]);
+
+  useEffect(() => {
+    dispatch(initData(serverSideData));
+  }, [dispatch, serverSideData]);
+
+  if (!loading) {
+    content = (
+      <div>
+        <ToastContainer
+          draggable={false}
+          closeOnClick
+          pauseOnHover
+          autoClose={false}
+          position="bottom-left"
+          className="toast-position"
+        />
+        <VirtualizedList data={clientSideData} />;
+      </div>
+    );
   } else {
     content = <div>waiting for list...</div>;
   }
+
   return (
     <>
       <Head>
@@ -30,3 +68,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const serverSideData = await generateFakeData(10);
+  console.log("test");
+  return { props: { serverSideData } };
+};
