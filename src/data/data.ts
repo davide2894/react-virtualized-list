@@ -1,16 +1,12 @@
 import { Row } from "@/types";
-import { v4 as uuidv4 } from "uuid";
+import generateFakeDataEntry from "./generateFakeProduct";
 
-let data: Array<Row> = [];
-
-for (let i = 0; i < 10000; i++) {
-  data.push({
-    name: "this is an item",
-    description: "item description",
-    price: "item price",
-    position: i,
-    id: uuidv4(),
+export const generateFakeData = (numberOfEntries: number) => {
+  return new Promise((resolve) => {
+    let data: Array<Row> = [];
+    for (let i = 0; i < numberOfEntries; i++) {
+      data.push(generateFakeDataEntry(i));
+    }
+    resolve(data);
   });
-}
-
-export default data;
+};
