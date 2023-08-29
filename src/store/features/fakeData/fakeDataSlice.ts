@@ -1,7 +1,5 @@
 import { localDbKey } from "@/constants";
-import generateFakeDataEntry from "@/data/generateFakeProduct";
 import { Row } from "@/types";
-import getFromLocalStorage from "@/utils/getFromLocalStorage";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const fakeDataSlice = createSlice({
