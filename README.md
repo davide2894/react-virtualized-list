@@ -2,7 +2,7 @@
 
 This is a virtualization list I built as per requirements provided by [Logifuture](https://www.logifuture.com//)
 
-[Demo hosted on Vercel](TBD)
+[Demo hosted on Vercel](https://react-virtualized-list-one.vercel.app/)
 
 ## User journey
 
