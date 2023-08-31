@@ -1,5 +1,7 @@
-import { Row } from "@/types";
-import generateFakeDataEntry from "./generateFakeProduct";
+import { Row } from "@types";
+import log from "@utils/log";
+import { faker } from "@faker-js/faker";
+import { v4 as uuidv4 } from "uuid";
 
 export const generateFakeData = (numberOfEntries: number) => {
   return new Promise((resolve) => {

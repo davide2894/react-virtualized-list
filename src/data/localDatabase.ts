@@ -1,5 +1,5 @@
-import { localDbKey } from "@/constants";
-import { Row } from "@/types";
+import { localDbKey } from "@constants";
+import { Row } from "@types";
 
 export function initLocalDb(data: Array<Row>) {
   localStorage.setItem(localDbKey, JSON.stringify(data ? data : []));

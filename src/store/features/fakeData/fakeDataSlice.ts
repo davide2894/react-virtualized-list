@@ -1,5 +1,5 @@
-import { localDbKey } from "@/constants";
-import { Row } from "@/types";
+import { localDbKey } from "@constants";
+import { Row } from "@types";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const fakeDataSlice = createSlice({
@@ -17,11 +17,15 @@ export const fakeDataSlice = createSlice({
     updateData: (state, action) => {
       state.data = action.payload;
     },
+    loadMoreData: (state, action) => {
+      state.data = action.payload;
+    },
     addFakeDataRow: (state, action) => {
       state.data = action.payload;
     },
   },
 });
 
-export const { initData, updateData, addFakeDataRow } = fakeDataSlice.actions;
+export const { initData, updateData, loadMoreData, addFakeDataRow } =
+  fakeDataSlice.actions;
 export default fakeDataSlice.reducer;

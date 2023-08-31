@@ -14,8 +14,19 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@components*": ["./src/components*"],
+      "@customHooks*": ["./src/customHooks*"],
+      "@data": ["./src/data/data.ts"],
+      "@styles*": ["./src/styles/*"],
+      "@pages*": ["./src/pages*"],
+      "@store": ["src/store/store.ts"],
+      "@fakeDataSlice": ["./src/store/features/fakeData/fakeDataSlice.ts"],
+      "@loadMoreDataThunk": ["./src/store/thunk/loadMoreDataThunk.ts"],
+      "@types": ["./src/types.ts"],
+      "@constants": ["./src/constants.ts"],
+      "@utils*": ["./src/utils*"]
+    },
+    "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

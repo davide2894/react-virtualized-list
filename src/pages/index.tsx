@@ -1,17 +1,14 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { generateFakeData } from "@/data/data";
-import fakeDataSlice, {
-  initData,
-} from "@/store/features/fakeData/fakeDataSlice";
-import VirtualizedList from "@/components/virtualizedList/VirtualizedList";
-import log from "@/utils/log";
-import { useAppSelector } from "@/customHooks/useAppSelector";
-import { useAppDispatch } from "@/customHooks/useAppDispatch";
+import styles from "../styles/Home.module.css";
+import { generateFakeData } from "@data";
+import { initData } from "@fakeDataSlice";
+import VirtualizedList from "@components/virtualizedList/VirtualizedList";
+import log from "@utils/log";
+import { useAppSelector } from "@customHooks/useAppSelector";
+import { useAppDispatch } from "@customHooks/useAppDispatch";
 import { useEffect, useState } from "react";
-import { Row } from "@/types";
-import { updateData } from "@/store/features/fakeData/fakeDataSlice";
+import { Row } from "@types";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,13 +38,11 @@ export default function Home(props: { serverSideData: Array<Row> }) {
       <div>
         <ToastContainer
           draggable={false}
-          closeOnClick
           pauseOnHover
-          autoClose={false}
           position="bottom-left"
           className="toast-position"
         />
-        <VirtualizedList data={clientSideData} />;
+        <VirtualizedList data={clientSideData} />
       </div>
     );
   } else {
@@ -63,14 +58,14 @@ export default function Home(props: { serverSideData: Array<Row> }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>{content}</div>
+        <div>{content}</div>
       </main>
     </>
   );
 }
 
 export const getServerSideProps = async () => {
-  const serverSideData = await generateFakeData(10);
+  const serverSideData = await generateFakeData(100);
   console.log("test");
   return { props: { serverSideData } };
 };

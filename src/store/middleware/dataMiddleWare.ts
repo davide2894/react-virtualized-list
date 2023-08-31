@@ -1,10 +1,9 @@
-import generateFakeDataEntry from "@/data/generateFakeProduct";
 import {
-  addEntryToDb,
-  getCurrentDb,
   initLocalDb,
+  getCurrentDb,
   updateLocalDb,
-} from "@/data/localDatabase";
+  addEntryToDb,
+} from "src/data/localDatabase";
 
 const dataMiddleWare = (store: any) => (next: any) => (action: any) => {
   if (action.type === "fakeDataSlice/initData") {
