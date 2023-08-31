@@ -1,0 +1,33 @@
+.tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+  height: 50px;
+  min-height: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .tr {
+    display: block;
+    margin-bottom: 0.625em;
+    height: auto;
+    min-height: autp;
+  }
+
+  .td {
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .td:last-child {
+    border-bottom: 0;
+  }
+}

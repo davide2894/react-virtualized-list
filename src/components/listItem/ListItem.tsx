@@ -1,5 +1,5 @@
 import { memo } from "react";
-
+import styles from "./ListItem.module.css";
 const MemoizedListItem = memo(function ListItem(props: {
   description: String;
   name: String;
@@ -8,28 +8,10 @@ const MemoizedListItem = memo(function ListItem(props: {
   height: number;
 }) {
   return (
-    <tr
-      data-position={props.position}
-      style={{
-        display: "flex",
-        height: props.height,
-        lineHeight: `${props.height}px`,
-        minWidth: "200px",
-        width: "100",
-      }}>
-      <td
-        style={{
-          marginLeft: `${props.height}px`,
-        }}>
-        {props.name}
-      </td>
-      <td
-        style={{
-          marginLeft: `${props.height}px`,
-        }}>
-        {props.description}
-      </td>
-      <td>{props.price}</td>
+    <tr data-position={props.position} className={styles.tr}>
+      <td className={styles.td}>{props.name}</td>
+      <td className={styles.td}>{props.description}</td>
+      <td className={styles.td}>{props.price}</td>
     </tr>
   );
 });
