@@ -1,5 +1,6 @@
-import log from "@/utils/log";
+import log from "@utils/log";
 import React, { memo } from "react";
+import styles from "./BackToTopButton.module.css";
 
 const MemoizedBackToTopButton = memo(function BackToTopButton(props: {
   onClick: () => void;
@@ -7,12 +8,9 @@ const MemoizedBackToTopButton = memo(function BackToTopButton(props: {
   log("rendered MemoizedBackToTopButton");
   return (
     <button
+      data-testid="backToTopButtonTestAttribute"
       onClick={props.onClick}
-      style={{
-        background: "red",
-        position: "sticky",
-        bottom: "10px",
-      }}>
+      className={styles.backToTopButton}>
       Back to top
     </button>
   );

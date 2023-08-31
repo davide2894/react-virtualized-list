@@ -1,0 +1,7 @@
+.backToTopButton {
+  background: darkgray;
+  position: sticky;
+  bottom: 10px;
+  width: 150px;
+  padding: 10px;
+}
