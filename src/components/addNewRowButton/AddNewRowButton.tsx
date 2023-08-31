@@ -1,9 +1,9 @@
-import { useAppDispatch } from "@/customHooks/useAppDispatch";
+import { useAppDispatch } from "@customHooks/useAppDispatch";
+import { generateFakeDataEntry } from "@data";
+import { addFakeDataRow } from "@fakeDataSlice";
 import React from "react";
-import { addFakeDataRow } from "@/store/features/fakeData/fakeDataSlice";
 import { toast } from "react-toastify";
-import { generateFakeData } from "@/data/data";
-import generateFakeDataEntry from "@/data/generateFakeProduct";
+import styles from "./AddNewRowButton.module.css";
 
 function AddNewRowButton() {
   const dispatch = useAppDispatch();
@@ -13,8 +13,11 @@ function AddNewRowButton() {
   }
 
   return (
-    <button style={{ background: "yellow" }} onClick={handleAddNewRow}>
-      AddNewRowButton
+    <button
+      data-testid="addNewRowButtonTestAttribute"
+      className={styles.addNewRowButton}
+      onClick={handleAddNewRow}>
+      Add new item
     </button>
   );
 }
