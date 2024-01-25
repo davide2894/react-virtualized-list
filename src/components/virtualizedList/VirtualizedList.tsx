@@ -60,6 +60,17 @@ const VirtualizedList = (props: { data: Array<Row> }) => {
     }
   }, []);
 
+  log({
+    dataLength,
+    containerHeight,
+    itemHeight,
+    throttledScrollTop,
+    loadMoreThreshold,
+    startIndex,
+    endIndex,
+    visibleItems,
+  });
+
   return (
     <div
       className={styles.container}
