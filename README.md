@@ -1,6 +1,6 @@
-# Virtualization list
+# Virtualized list
 
-This is a virtualization list I built as per requirements provided by [Logifuture](https://www.logifuture.com//)
+This is a built-from-scratch virtualized list, built by me for learning and experimentig purposes
 
 [Demo hosted on Vercel](https://react-virtualized-list-one.vercel.app/)
 
