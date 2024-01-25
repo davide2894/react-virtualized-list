@@ -1,1 +1,1 @@
-export const localDbKey = "logiFuture";
+export const localDbKey = "virtualizedListDbKey";
