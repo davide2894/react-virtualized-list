@@ -7,6 +7,7 @@ import styles from "./AddNewRowButton.module.css";
 
 function AddNewRowButton() {
   const dispatch = useAppDispatch();
+
   function handleAddNewRow() {
     dispatch(addFakeDataRow(generateFakeDataEntry()));
     toast.success("New row added at the top of the list");
